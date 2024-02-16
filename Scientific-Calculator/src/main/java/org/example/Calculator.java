@@ -54,11 +54,16 @@ public class Calculator {
         }
     }
 
-    private static double squareRoot(double x) {
+    public static double squareRoot(double x) {
         return Math.sqrt(x);
     }
 
-    private static int factorial(int x) {
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    public static int factorial(int x) {
         if (x == 0)
             return 1;
         int result = 1;
@@ -68,11 +73,11 @@ public class Calculator {
         return result;
     }
 
-    private static double naturalLog(double x) {
+    public static double naturalLog(double x) {
         return Math.log(x);
     }
 
-    private static double power(double x, double b) {
+    public static double power(double x, double b) {
         return Math.pow(x, b);
     }
 }
