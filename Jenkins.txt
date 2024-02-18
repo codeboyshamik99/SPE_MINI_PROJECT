@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pull Git Repo') {
+            steps {
+                git 'https://github.com/codeboyshamik99/SPE_MINI_PROJECT.git'
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                script {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+        stage('Docker Build to Image') {
+            steps {
+                script {
+                    sh 'pwd'
+                    sh 'ls'
+                    sh 'sudo docker build -t cal-image .'
+                    sh 'sudo docker tag cal-image:latest shamik99/shamik-repo:latest'
+                    sh 'sudo docker push shamik99/shamik-repo:latest'
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                   sh 'echo sachin123 | docker login -u shamik99 --password-stdin || true'
+                   sh 'docker push shamik99/shamik-repo:latest'
+
+                }
+            }
+        }
+        
+        stage('Pull Docker Image of Nodes') {
+        steps {
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, inventory: 'Deploy/inventory',
+                playbook: 'Deploy/docker-deploy.yml', sudoUser: null, vaultTmpPath: ''
+            }
+        }
+
+    }
+}
