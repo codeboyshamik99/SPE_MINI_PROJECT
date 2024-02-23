@@ -41,6 +41,10 @@ pipeline {
                 playbook: 'Deploy/docker-deploy.yml', sudoUser: null, vaultTmpPath: ''
             }
         }
-
     }
+    post{
+        always{
+            mail bcc: '', body: 'Build Status Changed', cc: '', from: '', replyTo: '', subject: 'Build Jenkins Calculator', to: 'shamikbhattacharjee27@gmail.com'
+        }
+    }
 }
