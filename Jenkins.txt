@@ -45,7 +45,7 @@ pipeline {
     }
 post{
 always{
-mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Change in Calculator Project', to: 'shamikbhattacharjee27@gmail.com'
+mail bcc: '', body: 'Change in Calculator Project', cc: '', from: '', replyTo: '', subject: 'Change in Calculator Project', to: 'shamikbhattacharjee27@gmail.com'
 }
 }
 }
