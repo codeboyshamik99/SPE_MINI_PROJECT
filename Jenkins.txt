@@ -35,7 +35,7 @@ pipeline {
             }
         }
         
-        stage('Pull Docker Image of Node') {
+        stage('Pull Docker Image of Nodes') {
         steps {
                 ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, inventory: 'Deploy/inventory',
                 playbook: 'Deploy/docker-deploy.yml', sudoUser: null, vaultTmpPath: ''
