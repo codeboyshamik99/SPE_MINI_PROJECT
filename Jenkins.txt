@@ -41,17 +41,17 @@ pipeline {
                 playbook: 'Deploy/docker-deploy.yml', sudoUser: null, vaultTmpPath: ''
             }
         }
-         stage('Send Email') {
+         stage('Send Email Notification') {
             steps {
-                always {
+                script {
                     mail(
                         bcc: '',
-                        body: 'Build Status Changed',
+                        body: 'its done',
                         cc: '',
-                        from: 'shamikbhattacharjee27@gmail.com', // Replace <your_email_address> with your actual email address
+                        from: 'shamikbhattacharjee27@gmail.com',
                         replyTo: '',
-                        subject: 'Build Jenkins Calculator',
-                        to: 'shamikbhattacharjee27@gmail.com'
+                        subject: 'Build calculator',
+                        to: 'sreeparna0410@gmail.com'
                     )
                 }
             }
