@@ -51,7 +51,7 @@ pipeline {
                         from: 'shamikbhattacharjee27@gmail.com',
                         replyTo: '',
                         subject: 'Build calculator',
-                        to: 'sreeparna0410@gmail.com'
+                        to: 'shamikbhattacharjee14699@gmail.com'
                     )
                 }
             }
